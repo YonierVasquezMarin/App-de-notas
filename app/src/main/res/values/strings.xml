@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">App de notas</string>
+    <string name="hintTitle">Título</string>
+    <string name="hintBodyNote">Cuerpo de la nota</string>
+    <string name="btnSaveNote">Guardar nota</string>
+    <string name="btnUploadNote">Cargar nota</string>
+    <string name="btnClearFields">Limpiar campos</string>
+    <string name="btnDeleteNote">Eliminar nota</string>
+    <string name="btnShowAllNotes">Mostrar todas las notas</string>
+</resources>

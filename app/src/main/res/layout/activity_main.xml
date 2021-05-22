@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/inputNoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hintTitle"
+        android:autofillHints="@string/hintTitle"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputNoteBody"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="25dp"
+        android:autofillHints="@string/hintBodyNote"
+        android:background="@color/black"
+        android:backgroundTint="#2196F3"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/hintBodyNote"
+        android:inputType="textMultiLine"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputNoteTitle" />
+
+    <ImageButton
+        android:id="@+id/btnSaveNote"
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#009688"
+        android:contentDescription="@string/btnSaveNote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_save_24" />
+
+    <ImageButton
+        android:id="@+id/btnShowAllNotes"
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#009688"
+        android:contentDescription="@string/btnShowAllNotes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteNote"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+
+    <ImageButton
+        android:id="@+id/btnDeleteNote"
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#009688"
+        android:contentDescription="@string/btnDeleteNote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnClearFields"
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+    <ImageButton
+        android:id="@+id/btnUploadNote"
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#009688"
+        android:contentDescription="@string/btnUploadNote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveNote"
+        app:srcCompat="@drawable/ic_baseline_upgrade_24" />
+
+    <ImageButton
+        android:id="@+id/btnClearFields"
+        android:layout_width="55dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#009688"
+        android:contentDescription="@string/btnClearFields"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnUploadNote"
+        app:srcCompat="@drawable/ic_baseline_cleaning_services_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
