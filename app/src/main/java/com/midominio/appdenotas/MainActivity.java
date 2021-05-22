@@ -76,7 +76,15 @@ public class MainActivity extends AppCompatActivity {
      * cuerpo lo extrae de la actividad.
      */
     private void saveNote() {
+        String noteTitle = inputNoteTitle.getText().toString();
+        String noteBody = inputNoteBody.getText().toString();
 
+        boolean continueMethod = checkFields(new String[]{noteTitle, noteBody}, "Ingrese titulo y cuerpo de la nota");
+
+        if(continueMethod) {
+            Nota userNote = new Nota(noteTitle, noteBody);
+
+        }
     }
 
     /**
