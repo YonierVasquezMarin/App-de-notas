@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -108,5 +109,26 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showAllNotes() {
 
+    }
+
+    /**
+     * Chequea que todos los Strings del arreglo del primer parametro contengan algun texto.
+     * Si al menos un String del arreglo está vacío, se muestra un Toast.
+     * @param editTextStrings un arreglo de Strings, los cuales son los textos de las
+     *                       entradas de los EditText de la actividad.
+     * @param errorMessage El mensaje de error que se muestra si al menos un String del arreglo
+     *                     no contiene carateres. Se muestra en un Toast.
+     * @return retorna "true" si todos los Strings del arreglo contienen algún carater. Retorna
+     * "false" si al menos un String del arreglo no tiene carateres.
+     */
+    private boolean checkFields(String[] editTextStrings, String errorMessage) {
+        for (String editTextString : editTextStrings) {
+            if(editTextString.isEmpty()) {
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        return true;
     }
 }
