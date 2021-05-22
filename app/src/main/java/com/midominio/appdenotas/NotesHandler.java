@@ -6,5 +6,9 @@ package com.midominio.appdenotas;
  * @version 1.0
  */
 public class NotesHandler {
+    private Note[] arrNotes;
 
+    public NotesHandler() {
+
+    }
 }

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         boolean continueMethod = checkFields(new String[]{noteTitle, noteBody}, "Ingrese titulo y cuerpo de la nota");
 
         if(continueMethod) {
-            Nota userNote = new Nota(noteTitle, noteBody);
+            Note userNote = new Note(noteTitle, noteBody);
         }
     }
 

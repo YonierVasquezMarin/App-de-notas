@@ -5,10 +5,10 @@ package com.midominio.appdenotas;
  * @author Yonier Vasquez Marin
  * @version 1.0
  */
-public class Nota {
+public class Note {
     private String title, messageBody;
 
-    public Nota(String title, String messageBody) {
+    public Note(String title, String messageBody) {
         this.title = title;
         this.messageBody = messageBody;
     }
