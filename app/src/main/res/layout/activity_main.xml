@@ -60,8 +60,6 @@
         android:backgroundTint="#009688"
         android:contentDescription="@string/btnShowAllNotes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/btnDeleteNote"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
