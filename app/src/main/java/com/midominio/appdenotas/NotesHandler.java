@@ -1,6 +1,7 @@
 package com.midominio.appdenotas;
 
 import android.os.Environment;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,8 +27,9 @@ public class NotesHandler {
     private final String noteLogFileName = "notes.json";
 
     public NotesHandler() {
-        arrNotes = this.getNoteListOfTheFile();
+        this.arrNotes = this.getNoteListOfTheFile();
     }
+
 
     /**
      * Busca la nota en el registro de notas del archivo que está guardado en memoría. Si encuentra
@@ -115,15 +117,15 @@ public class NotesHandler {
             arrNotes = new ArrayList<Note>();
         }
 
-        if (this.arrNotes.contains(noteToSaveInTheFile)) {
-            int indexOfNoteToUpdated = this.arrNotes.indexOf(noteToSaveInTheFile);
-            try {
-                this.arrNotes.add(indexOfNoteToUpdated, noteToSaveInTheFile);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+        boolean noteFounded = false;
+        for (Note noteOfTheList : this.arrNotes) {
+            if (noteOfTheList.getTitle().equals(noteToSaveInTheFile.getTitle())) {
+                noteOfTheList.setMessageBody(noteToSaveInTheFile.getMessageBody());
+                noteFounded = true;
             }
+        }
 
-        } else {
+        if (!noteFounded) {
             this.arrNotes.add(noteToSaveInTheFile);
         }
         this.saveNoteListInTheFile(this.arrNotes);

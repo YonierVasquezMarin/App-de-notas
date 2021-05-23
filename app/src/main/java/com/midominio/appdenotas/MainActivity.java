@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener cl2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadNote();
+                getNote();
             }
         };
         btnUploadNote.setOnClickListener(cl2);
@@ -95,13 +95,20 @@ public class MainActivity extends AppCompatActivity {
      * titulos guardados en la targeta SD. Después, trae el cuerpo de la nota y lo pone
      * en el segundo EditText de la actividad.
      */
-    private void uploadNote() {
+    private void getNote() {
         String noteTitle = this.inputNoteTitle.getText().toString();
 
         boolean continueMethod = this.checkFields(new String[]{noteTitle}, "Especifica un titulo");
         if (continueMethod) {
-            String noteBody = this.notesHandler.getNoteOfTheList(noteTitle).getMessageBody();
-            this.inputNoteBody.setText(noteBody);
+
+            Note noteToGet = this.notesHandler.getNoteOfTheList(noteTitle);
+            if(noteToGet != null) {
+                String noteBody = noteToGet.getMessageBody();
+                this.inputNoteBody.setText(noteBody);
+            } else {
+                Toast.makeText(this, "La nota no existe", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -139,8 +146,12 @@ public class MainActivity extends AppCompatActivity {
     private void showAllNotes() {
         ArrayList<String> notesTitleOfAllTheNotes = this.notesHandler.getTitlesOfAllTheNotes();
         String messageBody = "";
-        for (String noteTitle : notesTitleOfAllTheNotes) {
-            messageBody += noteTitle + "\n";
+        if(notesTitleOfAllTheNotes != null && notesTitleOfAllTheNotes.size()!=0) {
+            for (String noteTitle : notesTitleOfAllTheNotes) {
+                messageBody += noteTitle + "\n";
+            }
+        } else {
+            Toast.makeText(this, "No hay notas guardadas", Toast.LENGTH_SHORT).show();
         }
         this.inputNoteBody.setText(messageBody);
     }
