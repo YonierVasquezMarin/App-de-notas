@@ -28,4 +28,12 @@ public class Note {
     public void setMessageBody(String messageBody) {
         this.messageBody = messageBody;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "title='" + title + '\'' +
+                ", messageBody='" + messageBody + '\'' +
+                '}';
+    }
 }

@@ -1,7 +1,6 @@
 package com.midominio.appdenotas;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,13 +10,15 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteBody;
-
     private ImageButton btnSaveNote, btnUploadNote, btnClearFields, btnDeleteNote, btnShowAllNotes;
+    private NotesHandler notesHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        notesHandler = new NotesHandler();
 
         inputNoteTitle = (EditText) findViewById(R.id.inputNoteTitle);
         inputNoteBody = (EditText) findViewById(R.id.inputNoteBody);
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(continueMethod) {
             Note userNote = new Note(noteTitle, noteBody);
+            notesHandler.saveNote(userNote);
         }
     }
 
