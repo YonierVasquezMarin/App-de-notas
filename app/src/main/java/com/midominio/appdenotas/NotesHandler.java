@@ -29,57 +29,6 @@ public class NotesHandler {
         arrNotes = this.getNoteListOfTheFile();
     }
 
-    //test
-    /**
-     * Recibe una nota y la guarda en la ultima posición en la lista de notas, en el archivo
-     * de notas de la targeta SD.
-     * @param noteToSave La nota que se guarda en el archivo.
-     */
-    public void saveNotesssss(Note noteToSave) {
-        File SDTarget = Environment.getExternalStorageDirectory();
-        File noteFile = new File(SDTarget.getAbsolutePath(), noteLogFileName);
-
-        String notesContent = "";
-
-        //leer el archivo
-        try {
-            InputStreamReader isr = new InputStreamReader(new FileInputStream(noteFile));
-            BufferedReader br = new BufferedReader(isr);
-            String line = br.readLine();
-            while (line!=null) {
-                notesContent += line;
-                line = br.readLine();
-            }
-
-            br.close();
-            isr.close();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        //Agrega al final de la lista de notas la nota a guardar
-        try {
-            Type noteCollectionType = new TypeToken<Collection<Note>>(){}.getType();
-            Gson gson = new Gson();
-            ArrayList<Note> noteList = gson.fromJson(notesContent, noteCollectionType);
-
-            if (noteList==null) {
-                noteList = new ArrayList<Note>();
-            }
-            noteList.add(noteToSave);
-            notesContent = gson.toJson(noteList);
-
-            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(noteFile));
-            osw.write(notesContent);
-            osw.flush();
-            osw.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     /**
      * Busca la nota en el registro de notas del archivo que está guardado en memoría. Si encuentra
      * la nota ésta se elimina.
