@@ -86,7 +86,7 @@ public class NotesHandler {
      * @param noteTitleToDelete titulo de la nota a eliminar .
      * @return retorna true si se encontró y se eliminó la nota. Si la nota no existe se retona false.
      */
-    private boolean deleteNoteOfTheFile(String noteTitleToDelete) {
+    public boolean deleteNoteOfTheFile(String noteTitleToDelete) {
         if (this.arrNotes != null) {
             Note noteToDelete = this.getNoteOfTheList(noteTitleToDelete);
             if (noteToDelete!= null) {

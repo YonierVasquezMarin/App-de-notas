@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteBody;
@@ -83,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(continueMethod) {
             Note userNote = new Note(noteTitle, noteBody);
-            notesHandler.saveNote(userNote);
+            this.notesHandler.saveNoteInTheFile(userNote);
+            Toast.makeText(this, "Guardada correctamente", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -93,14 +96,21 @@ public class MainActivity extends AppCompatActivity {
      * en el segundo EditText de la actividad.
      */
     private void uploadNote() {
+        String noteTitle = this.inputNoteTitle.getText().toString();
 
+        boolean continueMethod = this.checkFields(new String[]{noteTitle}, "Especifica un titulo");
+        if (continueMethod) {
+            String noteBody = this.notesHandler.getNoteOfTheList(noteTitle).getMessageBody();
+            this.inputNoteBody.setText(noteBody);
+        }
     }
 
     /**
      * Limpia los dos campos de la actividad.
      */
     private void clearFields() {
-
+        this.inputNoteTitle.setText("");
+        this.inputNoteBody.setText("");
     }
 
     /**
@@ -108,7 +118,18 @@ public class MainActivity extends AppCompatActivity {
      * Luego, busca la nota en la targeta SD y la borra.
      */
     private void deleteNote() {
+        String noteTitle = this.inputNoteTitle.getText().toString();
 
+        boolean continueMethod = this.checkFields(new String[]{noteTitle}, "Especifica un titulo");
+        if (continueMethod) {
+            if (this.notesHandler.deleteNoteOfTheFile(noteTitle)) {
+                Toast.makeText(this, "La nota se eliminó", Toast.LENGTH_SHORT).show();
+                this.inputNoteTitle.setText("");
+                this.inputNoteBody.setText("");
+            } else {
+                Toast.makeText(this, "La nota no se encuentra", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /**
@@ -116,7 +137,12 @@ public class MainActivity extends AppCompatActivity {
      * titulos en el segundo EditText de la actividad.
      */
     private void showAllNotes() {
-
+        ArrayList<String> notesTitleOfAllTheNotes = this.notesHandler.getTitlesOfAllTheNotes();
+        String messageBody = "";
+        for (String noteTitle : notesTitleOfAllTheNotes) {
+            messageBody += noteTitle + "\n";
+        }
+        this.inputNoteBody.setText(messageBody);
     }
 
     /**
